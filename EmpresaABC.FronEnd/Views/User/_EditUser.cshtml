@@ -1,0 +1,109 @@
+﻿@model EmpresaABC.FronEnd.Models.ViewModels.UserViewModel
+@{
+    ViewBag.Title = "Editar Usuario";
+    Layout = null;
+}
+
+@using (Html.BeginForm("EditUser", "User", FormMethod.Post, new { enctype = "multipart/form-data", id = "myform" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.UserId)
+    @Html.HiddenFor(model => model.beforeUserName)
+    @Html.HiddenFor(model => model.beforeMail)
+    @Html.HiddenFor(model => model.beforeProfileId)
+
+    <div class="panel-body">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Nombre</label>
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @required = "required" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Apellido Paterno</label>
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.FirtName, new { @class = "form-control", @required = "required" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Apellido Materno</label>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @required = "required" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Genero:</label>
+                            @Html.DropDownList("Gender", null, "Seleccione", new { @class = "select", @name = "Gender", @required = "required", @data_placeholder = "Seleccionar el Genero" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Perfil:</label>
+                            @Html.DropDownList("ProfileId", null, "Seleccione", new { @class = "select", @name = "ProfileId", @required = "required", @data_placeholder = "Seleccionar Perfil" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Correo</label>
+                        <div class="form-group">
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.Mail, new { @class = "form-control", @required = "required" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label>UserName</label>
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @required = "required" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Celular</label>
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.CellPhone, new { @class = "form-control", @required = "required" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button type="submit" class="btn bg-capture btn-labeled btn-labeled-right">Actualizar<b><i class="icon-add"></i></b></button>
+                        <br /><br />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+<style type="text/css">
+    .ui-datepicker {
+        z-index: 1151 !important;
+    }
+</style>
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+        $(function () {
+
+            // Simple select without search
+            $('.select').select2({
+                placeholder: "Selecione",
+                tags: true
+            });
+        });
+    });
+
+
+</script>

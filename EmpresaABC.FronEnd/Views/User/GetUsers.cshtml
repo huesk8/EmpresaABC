@@ -1,0 +1,132 @@
+﻿@model EmpresaABC.FronEnd.Models.ViewModels.UserViewModel
+@{
+    ViewBag.Title = "GetUsers";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+
+<div class="panel panel-flat">
+    <div class="panel-heading">
+        <h5 class="panel-title">Lista de Usuarios</h5>
+        <div class="heading-elements">
+            <div class="btn-group">
+                <a href="@Url.Action("CreateUser","User")" class="btn bg-capture btn-labeled">Crear Usuario<b><i class="icon-plus-circle2"></i></b></a>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class="table datatable-responsive table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre Completo</th>
+                    <th>Correo</th>
+                    <th>Genero</th>
+                    <th>Perfil</th>
+                    <th>Celular</th>
+                    <th>UserName</th>
+                    <th>Estatus</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Users)
+                {
+                    <tr>
+                        <td>
+                            @item.FullName
+                        </td>
+                        <td>
+                            @item.Mail
+                        </td>
+                        <td>
+                            @if (item.Gender.Equals("F"))
+                            {
+                                <label>  Femenino </label>
+                            }
+                            else
+                            {
+                                <label>  Masculino </label>
+                            }
+                        </td>
+                        <td>
+                            @item.Profile.Description
+                        </td>
+                        <td>
+                            @item.CellPhone
+                        </td>
+                        <td>
+                            @item.UserName
+                        </td>
+                        <td>
+                            @if (item.IsActive)
+                            {
+                                <span class="label label-success">Activo</span>
+                            }
+                            else
+                            {
+                                <span class="label label-default">Inactivo</span>
+                            }
+                        </td>
+                        <td class="text-center">
+                            <ul class="icons-list">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="icon-menu9"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a onclick="editar('@item.UserId')" href="javascript:void(0)"><i class="icon-list-ordered"></i>Editar</a></li>
+                                        @if (item.IsActive)
+                                        {
+                                            <li><a onclick="desactivar('@item.UserId')" href="javascript:void(0)"><i class="icon-file-minus"></i> Desactivar</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li><a onclick="activar('@item.UserId')" href="javascript:void(0)"><i class="icon-file-check"></i> Activar</a></li>
+                                        }
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="EditUser" class="modal fade" data-keyboard="false" data-backdrop="static" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-capture">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h5 class="modal-title">Large modal</h5>
+            </div>
+            <div class="row">
+                <div class="col-md-12" id="EditUserContent">
+                    @RenderPage("_EditUser.cshtml")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageCrumb{
+    <li>Usuarios</li>
+    <li class="active">Administrar Usuarios</li>
+}
+
+@section CustomScripts{
+    <script type="text/javascript" src="~/assets/js/plugins/tables/datatables/datatables.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/plugins/tables/datatables/extensions/responsive.min.js"></script>
+    @if (Request.Browser.Browser == "IE" || Request.Browser.Browser == "InternetExplorer")
+    {
+        <script src="~/assets/js/plugins/sweetalert/polyfill.min.js"></script>
+        <script src="~/assets/js/plugins/sweetalert/es6-promise.js"></script>
+    }
+    <link href="~/assets/js/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <script src="~/assets/js/plugins/sweetalert/sweetalert2.js"></script>
+    <script src="~/assets/js/pages/GetUsers.js"></script>
+}
+
+
+

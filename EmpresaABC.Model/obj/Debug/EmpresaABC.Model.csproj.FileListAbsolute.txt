@@ -1,0 +1,16 @@
+C:\Git\Ventus\EmpresaABC\EmpresaABC\EmpresaABC.Model\bin\Debug\EmpresaABC.Model.dll.config
+C:\Git\Ventus\EmpresaABC\EmpresaABC\EmpresaABC.Model\bin\Debug\EmpresaABC.Model.dll
+C:\Git\Ventus\EmpresaABC\EmpresaABC\EmpresaABC.Model\bin\Debug\EmpresaABC.Model.pdb
+C:\Git\Ventus\EmpresaABC\EmpresaABC\EmpresaABC.Model\bin\Debug\EntityFramework.dll
+C:\Git\Ventus\EmpresaABC\EmpresaABC\EmpresaABC.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Git\Ventus\EmpresaABC\EmpresaABC\EmpresaABC.Model\bin\Debug\Newtonsoft.Json.dll
+C:\Git\Ventus\EmpresaABC\EmpresaABC\EmpresaABC.Model\bin\Debug\EntityFramework.xml
+C:\Git\Ventus\EmpresaABC\EmpresaABC\EmpresaABC.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Git\Ventus\EmpresaABC\EmpresaABC\EmpresaABC.Model\bin\Debug\Newtonsoft.Json.xml
+C:\Git\Ventus\EmpresaABC\EmpresaABC\EmpresaABC.Model\bin\Debug\es\EntityFramework.resources.dll
+C:\Git\Ventus\EmpresaABC\EmpresaABC\EmpresaABC.Model\bin\Debug\es\EntityFramework.SqlServer.resources.dll
+C:\Git\Ventus\EmpresaABC\EmpresaABC\EmpresaABC.Model\obj\Debug\EmpresaABC.Model.csproj.AssemblyReference.cache
+C:\Git\Ventus\EmpresaABC\EmpresaABC\EmpresaABC.Model\obj\Debug\EmpresaABC.Model.csproj.CoreCompileInputs.cache
+C:\Git\Ventus\EmpresaABC\EmpresaABC\EmpresaABC.Model\obj\Debug\EmpresaABC.Model.csproj.CopyComplete
+C:\Git\Ventus\EmpresaABC\EmpresaABC\EmpresaABC.Model\obj\Debug\EmpresaABC.Model.dll
+C:\Git\Ventus\EmpresaABC\EmpresaABC\EmpresaABC.Model\obj\Debug\EmpresaABC.Model.pdb

@@ -1,0 +1,86 @@
+﻿@model EmpresaABC.FronEnd.Models.ViewModels.ProductViewModel
+@{
+    ViewBag.Title = "Editar Producto";
+    Layout = null;
+}
+
+@using (Html.BeginForm("EditProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data", id = "myform" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ProductId)
+    
+    <div class="panel-body">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Nombre Producto</label>
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.Description, new { @class = "form-control", @required = "required" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Stock</label>
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.Amount, new { @class = "form-control", @required = "required" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Precio por detal</label>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.RetailPrice, new { @class = "form-control", @required = "required" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Precio por Mayor</label>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.HigherPrice, new { @class = "form-control", @required = "required" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Estiba:</label>
+                            @Html.DropDownList("StowageId", null, "Seleccione", new { @class = "select", @name = "StowageId", @required = "required", @data_placeholder = "Seleccionar Estiba" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button type="submit" class="btn bg-capture btn-labeled btn-labeled-right">Actualizar<b><i class="icon-add"></i></b></button>
+                        <br /><br />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+<style type="text/css">
+    .ui-datepicker {
+        z-index: 1151 !important;
+    }
+</style>
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+        $(function () {
+
+            // Simple select without search
+            $('.select').select2({
+                placeholder: "Selecione",
+                tags: true
+            });
+        });
+    });
+
+
+</script>

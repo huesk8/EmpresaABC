@@ -1,0 +1,112 @@
+﻿@model EmpresaABC.FronEnd.Models.ViewModels.ProductViewModel
+@{
+    ViewBag.Title = "Crear Producto";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <h6 class="panel-title">Crear Producto</h6>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("CreateProduct", "Product", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        <div class="col-md-12 text-right">
+                            <button type="submit" class="btn bg-capture btn-labeled btn-labeled-right">Crear Producto<b><i class="icon-add"></i></b></button>
+                        </div>
+                        <div class="col-md-12">
+                            <fieldset>
+                                <legend class="text-semibold"><i class="icon-user position-left"></i> Datos del Producto</legend>
+                            </fieldset>
+                            <div class="row">
+
+                                <div class="col-md-3">
+                                    <label>Nombre del Producto</label>
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(m => m.Description, new { @class = "form-control", @required = "required" })
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label>Stock</label>
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(m => m.Amount, new { @class = "form-control", @required = "required" })
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Precio por Detal</label>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(m => m.RetailPrice, new { @class = "form-control", @required = "required" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Precio por Mayor</label>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(m => m.HigherPrice, new { @class = "form-control", @required = "required" })
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Estiba:</label>
+                                        @Html.DropDownList("StowageId", null, "Seleccione", new { @class = "select", @name = "StowageId", @required = "required", @data_placeholder = "Seleccionar Estiba" })
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section PageCrumb{
+    <li>Productos</li>
+    <li><a href="@Url.Action("GetProduct","Product")">Lista de Productos</a></li>
+    <li class="active">Crear Producto</li>
+}
+
+@section CustomScripts{
+    <script type="text/javascript" src="~/assets/js/plugins/tables/datatables/datatables.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/plugins/tables/datatables/extensions/responsive.min.js"></script>
+    <script src="~/assets/js/plugins/forms/styling/switchery.min.js"></script>
+    @if (Request.Browser.Browser == "IE" || Request.Browser.Browser == "InternetExplorer")
+    {
+        <script src="~/assets/js/plugins/sweetalert/polyfill.min.js"></script>
+        <script src="~/assets/js/plugins/sweetalert/es6-promise.js"></script>
+    }
+
+    <link href="~/assets/js/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <script src="~/assets/js/plugins/sweetalert/sweetalert2.js"></script>
+    <script type="text/javascript" src="~/assets/js/pages/CreateProduct.js"></script>
+
+    <script type="text/javascript">
+
+        // Select2 selects
+        $(".select").select2({
+            tags: false
+        });
+
+        // Simple select without search
+        $(".select-simple").select2({
+            minimumResultsForSearch: Infinity
+        });
+
+        $(".readonly").keydown(function (e) {
+            e.preventDefault();
+        });
+
+    </script>
+
+}

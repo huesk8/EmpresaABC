@@ -1,0 +1,39 @@
+﻿@model EmpresaABC.FronEnd.Models.ViewModels.StowageViewModel
+@{
+    ViewBag.Title = "Editar Estiba";
+    Layout = null;
+}
+
+@using (Html.BeginForm("EditStowage", "Stowage", FormMethod.Post, new { enctype = "multipart/form-data", id = "myform" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.StowageId)
+
+    <div class="panel-body">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Numero de Estiba</label>
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.StowageNo, new { @class = "form-control", @required = "required" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>comentario</label>
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button type="submit" class="btn bg-capture btn-labeled btn-labeled-right">Actualizar<b><i class="icon-add"></i></b></button>
+                        <br /><br />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}

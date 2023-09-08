@@ -1,0 +1,48 @@
+﻿@using EmpresaABC.FronEnd.Models.Alerts
+@{
+
+    var alerts = TempData.ContainsKey(Alert.TempDataKey)
+
+        ? (List<Alert>)TempData[Alert.TempDataKey]
+
+        : new List<Alert>();
+
+    foreach (var alert in alerts)
+
+    {
+
+        <div id="notify" class="alert bg-@alert.AlertStyle  alert-styled-left">
+
+            @if (alert.Dismissable)
+
+            {
+
+                <button type="button" class="close" data-dismiss="alert"><span>&times;</span><span class="sr-only">Close</span></button>
+
+            }
+
+            <strong>@alert.Message</strong> : @alert.AlertTitle
+
+            @if (alert.ErrorEntries != null)
+            {
+                <ul>
+                    @foreach (var item in alert.ErrorEntries)
+                    {
+                        <li>Error: @item.ErrorMessage</li>
+                    }
+                </ul>
+
+            }
+        </div>
+
+    }
+}
+@*<script>
+        $(document).ready(function () {
+            window.setTimeout(function () {
+                $("#notify").fadeTo(4000, 0).slideUp(300, function () {
+                    $(this).remove();
+                });
+            }, 5000);
+        });
+    </script>*@

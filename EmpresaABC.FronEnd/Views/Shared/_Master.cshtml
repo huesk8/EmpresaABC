@@ -1,0 +1,217 @@
+﻿@using System.Web.Configuration
+@using EmpresaABC.FronEnd.Bussines
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Empresa ABC System | Title </title>
+
+    <!-- Global stylesheets -->
+    @*<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">*@
+    <link href="~/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/core.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/components.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/css/colors.css" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+    <!-- Core JS files -->
+    <script type="text/javascript" src="~/assets/js/core/libraries/jquery.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/core/libraries/bootstrap.min.js"></script>
+    @*<script type="text/javascript" src="~/assets/js/plugins/loaders/blockui.min.js"></script>*@
+    <!-- /core JS files -->
+    <!-- Theme JS files -->
+    <script type="text/javascript" src="~/assets/js/plugins/forms/selects/select2.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/plugins/forms/styling/uniform.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/plugins/ui/moment/moment.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/plugins/ui/prism.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/plugins/pickers/daterangepicker.js"></script>
+    <script type="text/javascript" src="~/assets/js/plugins/pickers/anytime.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/plugins/pickers/pickadate/picker.js"></script>
+    <script type="text/javascript" src="~/assets/js/plugins/pickers/pickadate/picker.date.js"></script>
+    <script type="text/javascript" src="~/assets/js/plugins/pickers/pickadate/picker.time.js"></script>
+    <script type="text/javascript" src="~/assets/js/plugins/pickers/pickadate/legacy.js"></script>
+    <script type="text/javascript" src="~/assets/js/core/libraries/jquery_ui/widgets.min.js"></script>
+    <script type="text/javascript" src="~/assets/js/core/app.js"></script>
+    <script type="text/javascript" src="~/assets/js/plugins/ui/ripple.min.js"></script>
+    <!-- /theme JS files -->
+    <!-- Favicon -->
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    @*<link rel="manifest" href="/manifest.json">*@ @*EHA*@
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body>
+
+    <!-- Main navbar -->
+    <div class="navbar navbar-default header-highlight" style="background-color:#273238">
+        <div class="navbar-header">
+            <ul class="nav navbar-nav visible-xs-block">
+                <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+                <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+            </ul>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-mobile">
+            <a class="navbar-brand text-center" href="@Url.Action("GetProduct","Product")">
+                <strong style="font-size: 2em; color:#ffffff; margin:20px auto;">Empresa ABC</strong>
+            </a>
+            <ul class="nav navbar-nav">
+                <li><a class="sidebar-control sidebar-main-toggle hidden-xs" style="color:white"><i class="icon-paragraph-justify3"></i></a></li>
+            </ul>
+            <div class="navbar-right">
+                <p class="navbar-text"><strong style="color:#ffffff;"> @(DateTime.Now.Hour < 12 ? "Buenos Dias" : DateTime.Now.Hour < 18 ? "Buenas Tardes" : "Buenas Noches"),  @User.Identity.FullName() !</strong></p>
+                <p class="navbar-text"><span class="label bg-success">Online</span></p>
+            </div>
+        </div>
+    </div>
+    <!-- /main navbar -->
+    <!-- Page container -->
+    <div class="page-container">
+
+        <!-- Page content -->
+        <div class="page-content">
+
+            <!-- Main sidebar -->
+            <div class="sidebar sidebar-main ">
+                <div class="sidebar-content">
+
+                    <!-- User menu -->
+                    <div class="sidebar-user-material">
+                        <div class="category-content">
+                            <div class="sidebar-user-material-content">
+                                <img src="~/assets/images/RefrescoLogo.png" style="width:200px;" alt="">
+                                <h6>@User.Identity.Position()</h6>
+                                <span class="text-size-small">@User.Identity.Email()</span>
+                            </div>
+
+                            <div class="sidebar-user-material-menu" style="background-color: #096fc1;">
+                                <a href="#user-nav" data-toggle="collapse"><span>Mi Cuenta</span> <i class="caret"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="navigation-wrapper collapse" id="user-nav">
+                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <ul class="navigation">
+                                    <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="icon-switch2"></i> <span> Cerrar Sesión</span></a></li>
+                                </ul>
+                            }
+
+                        </div>
+                    </div>
+                    <!-- /user menu -->
+                    <!-- Main navigation -->
+                    <div class="sidebar-category sidebar-category-visible">
+                        <div class="category-content no-padding">
+                            <ul class="navigation navigation-main navigation-accordion">
+
+                                @if (User.IsInRole("Administrador"))
+                                {
+                                    <li class="navigation-header"><span>Menu Principal</span> <i class="icon-menu" title="Main pages"></i></li>
+                                    <li><a href="@Url.Action("GetProduct", "Product")"><i class="icon-home4"></i> <span>Home</span></a></li>
+                                    <li>
+                                        <a href="#"><i class="icon-users"></i> <span>Usuarios</span></a>
+                                        <ul>
+                                            <li><a href="@Url.Action("GetUsers", "User")">Administrar Usuarios</a></li>
+                                            <li><a href="@Url.Action("GetProfiles", "User")">Administrar Perfiles</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icon-archive"></i> <span>Productos</span></a>
+                                        <ul>
+                                            <li><a href="@Url.Action("GetStowage", "Stowage")">Estibas</a></li>
+                                            <li><a href="@Url.Action("GetProduct", "Product")">Productos</a></li>
+                                        </ul>
+                                    </li>
+                                  
+                                }
+                              
+                                <!-- /main -->
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /main navigation -->
+
+                </div>
+            </div>
+            <!-- /main sidebar -->
+            <!-- Main content -->
+            <div class="content-wrapper">
+
+                <!-- Page header -->
+                <div class="page-header">
+                    <div class="page-header-content">
+                        <div class="page-title">
+                            <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Empresa ABC</span> - Refresqueria  System</h4>
+                        </div>
+
+                    </div>
+
+                    <div class="breadcrumb-line breadcrumb-line-component">
+                        <ul class="breadcrumb">
+                            <li><a href="@Url.Action("GetProduct","Product")"><i class="icon-home2 position-left"></i> Inicio</a></li>
+                            @RenderSection("PageCrumb", false)
+                        </ul>
+
+                        <ul class="breadcrumb-elements">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="icon-gear position-left"></i>
+                                    Configuración
+                                    <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="@Url.Action("ChangePassword","Manage")"><i class="icon-user-lock"></i> Cambiar Contraseña</a></li>
+                                    
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- /page header -->
+                <!-- Content area -->
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @{Html.RenderPartial("_Alerts");}
+                        </div>
+                    </div>
+                    @RenderBody()
+
+                </div>
+                <!-- /content area -->
+
+            </div>
+            <!-- /main content -->
+
+        </div>
+        <!-- /page content -->
+
+    </div>
+    <!-- /page container -->
+    @RenderSection("CustomScripts", required: false)
+
+    <!-- Java Script content -->
+
+</body>
+</html>
